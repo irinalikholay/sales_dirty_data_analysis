@@ -1,28 +1,36 @@
-import pandas as pd 
+import pandas as pd
 import matplotlib.pyplot as plt
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RAW_DATA_PATH = PROJECT_ROOT / "data" / "raw" / "sales_dirty_5000.csv"
+PROCESSED_DATA_PATH = PROJECT_ROOT / "data" / "processed" / "sales_cleaned.csv"
 
 df = pd.read_csv(RAW_DATA_PATH)
 
-print("\n*** BASIC INFO ***")
-print(df.info())
+# *** basic type fixes ***
+df["order_date"] = pd.to_datetime(df["order_date"], errors="coerce")
 
-print("\n*** FIRST ROWS ***")
-print(df.head())
+# *** data cleaning rules ***
+clean_df = df.copy()
 
-print("\n*** DESCRIPTIVE STATISTICS ***")
-print(df.describe())
+clean_df = clean_df[clean_df["price"].notna()]
+clean_df = clean_df[clean_df["quantity"] > 0]
 
-print("\n*** MISSING VALUES ***")
-print(df.isna().sum())
+# *** revenue recalculation ***
+clean_df["revenue"] = clean_df["quantity"] * clean_df["price"]
 
-df["order_date"] = pd.to_datetime(df["order_date"], errors ="coerce")
+# *** save cleaned data ***
+clean_df.to_csv(PROCESSED_DATA_PATH, index=False)
 
-df["revenue"] = df["quantity"] * df["price"]
+# *** sanity checks ***
+print("\n*** CLEAN DATA INFO ***")
+print(clean_df.info())
 
-print("\n*** REVENUE RANGE ***")
-print
+print("\n*** CLEAN DATA SAMPLE ***")
+print(clean_df.head())
 
+print("\n*** REVENUE SUMMARY ***")
+print(clean_df["revenue"].describe())
+
+clean_df.to_csv(PROCESSED_DATA_PATH, index=False)
