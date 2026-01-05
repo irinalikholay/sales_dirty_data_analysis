@@ -41,3 +41,42 @@ Before performing any revenue analysis , the data must be cleaned and validated:
 - Decide how to handle missing prices.
 - Define business rules for negativeand zero quantities.
 - Recalculate revenue after data cleaning.
+
+
+## Sales Analysis (Clean Data)
+
+This analysis is based on cleaned sales data from `data/processed/sales_cleaned.csv`.
+
+The goal of this step is to analyze revenue distribution, identify top-performing products,
+and evaluate key business metrics using validated data only.
+
+### Revenue Distribution
+
+The revenue per order shows a right-skewed distribution.
+
+Key observations:
+- Most orders generate low to medium revenue.
+- A small number of high-value orders create a long right tail.
+- These high-value orders significantly affect the average order value.
+
+### Revenue by Product
+
+Revenue was aggregated by product to identify top contributors.
+
+Key observations:
+- "Phone" is the top revenue-generating product.
+- Other products contribute at a comparable level.
+- No product shows critically low performance.
+
+### Key Metrics
+
+- Average order value: 521.73
+- Total number of orders: 4236
+
+Due to the skewed distribution, the average order value is higher than the typical order.
+
+### Business Insights
+
+- Revenue is driven primarily by one leading product (Phone).
+- High-value orders inflate the average order value.
+- The product portfolio appears balanced overall.

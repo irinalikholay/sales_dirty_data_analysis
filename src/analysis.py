@@ -34,3 +34,43 @@ print("\n*** REVENUE SUMMARY ***")
 print(clean_df["revenue"].describe())
 
 clean_df.to_csv(PROCESSED_DATA_PATH, index=False)
+
+df = pd.read_csv(PROCESSED_DATA_PATH)
+
+plt.figure(figsize=(8, 5))
+plt.hist(df["revenue"], bins=30)
+plt.title("Revenue Distribution")
+plt.xlabel("Revenue")
+plt.ylabel("Number of Orders")
+plt.show()
+
+revenue_by_product = (
+    df.groupby("product")["revenue"]
+    .sum()
+    .sort_values(ascending=False)
+)
+
+print("\n*** REVENUE BY PRODUCT ***")
+print(revenue_by_product)
+
+
+average_order_value = df["revenue"].mean()
+
+print("\n*** AVERAGE ORDER VALUE ***")
+print(round(average_order_value, 2))
+
+
+orders_count = df.shape[0]
+
+print("\n*** TOTAL NUMBER OF ORDERS ***")
+print(orders_count)
+
+
+plt.figure(figsize=(8, 5))
+revenue_by_product.plot(kind="bar")
+plt.title("Revenue by Product")
+plt.xlabel("Product")
+plt.ylabel("Total Revenue")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
