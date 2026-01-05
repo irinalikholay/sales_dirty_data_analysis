@@ -43,14 +43,14 @@ Before performing any revenue analysis , the data must be cleaned and validated:
 - Recalculate revenue after data cleaning.
 
 
-## Sales Analysis (Clean Data)
+### Sales Analysis (Clean Data)
 
 This analysis is based on cleaned sales data from `data/processed/sales_cleaned.csv`.
 
 The goal of this step is to analyze revenue distribution, identify top-performing products,
 and evaluate key business metrics using validated data only.
 
-## Visualization 
+### Visualization 
 
 ![Revenue Distribution](visuals/revenue_distribution.png)
 ![Revenue by Product](visuals/revenue_by_product.png)
@@ -85,3 +85,48 @@ Due to the skewed distribution, the average order value is higher than the typic
 - Revenue is driven primarily by one leading product (Phone).
 - High-value orders inflate the average order value.
 - The product portfolio appears balanced overall.
+
+
+## Business Conclusions
+
+### Overall Sales Performance
+
+The majority of orders generate relatively low revenue, while a small number of high-value orders significantly increase the overall revenue distribution.
+The revenue distribution is strongly right-skewed, which indicates the presence of outliers with very high order values.
+
+This means that most customers make small purchases, and large orders are rare but have a strong impact on aggregated metrics.
+
+### Product Revenue Contribution
+
+Among all products, "Phones" generate the highest total revenue and are the main driver of company sales.
+Other products (Tablets, Monitors, Headphones, and Laptops) contribute noticeably less and have relatively similar revenue levels.
+
+There are no products with zero or negligible revenue, which indicates that the product assortment is generally effective.
+
+**Business risk:** the company is highly dependent on one product category, which may increase vulnerability to market changes.
+
+### Average Order Value Analysis
+
+The average order value is approximately 521, however this metric is significantly influenced by a small number of very expensive orders.
+At the same time, the median order value is much lower, showing that at least half of the customers spend considerably less than the average.
+
+This suggests that the mean order value overestimates typical customer behavior, and the median provides a more reliable measure for business decisions.
+
+### Data Quality Impact on Business Metrics
+
+During the analysis, several data quality issues were identified, including missing prices and invalid quantity values.
+Without proper data cleaning, these issues would have led to distorted revenue calculations and misleading business conclusions.
+
+This highlights the importance of data validation and cleaning before performing any financial or performance analysis.
+
+### Recommendations
+
+- Use median order value in addition to average metrics for more accurate insights.
+- Reduce dependency on the Phone product category by strengthening other product lines.
+- Investigate the root causes of missing prices and invalid quantities.
+- Implement data validation rules at the data collection stage to prevent future quality issues.
+
+### Final Note
+
+This analysis demonstrates how raw transactional data can produce misleading results if data quality is not addressed.
+After cleaning and validation, the dataset provides a reliable foundation for making informed business decisions.
