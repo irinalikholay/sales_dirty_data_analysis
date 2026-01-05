@@ -50,6 +50,11 @@ This analysis is based on cleaned sales data from `data/processed/sales_cleaned.
 The goal of this step is to analyze revenue distribution, identify top-performing products,
 and evaluate key business metrics using validated data only.
 
+## Visualization 
+
+![Revenue Distribution](visuals/revenue_distribution.png)
+![Revenue by Product](visuals/revenue_by_product.png)
+
 ### Revenue Distribution
 
 The revenue per order shows a right-skewed distribution.
