@@ -42,7 +42,8 @@ plt.hist(df["revenue"], bins=30)
 plt.title("Revenue Distribution")
 plt.xlabel("Revenue")
 plt.ylabel("Number of Orders")
-plt.show()
+plt.savefig("visuals/revenue_distribution.png")
+plt.close()
 
 revenue_by_product = (
     df.groupby("product")["revenue"]
@@ -73,4 +74,5 @@ plt.xlabel("Product")
 plt.ylabel("Total Revenue")
 plt.xticks(rotation=45)
 plt.tight_layout()
-plt.show()
+plt.savefig("visuals/revenue_by_product.png")
+plt.close()
